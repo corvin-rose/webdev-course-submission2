@@ -1,0 +1,76 @@
+body.staff {
+    overflow: hidden;
+}
+
+.staff-container {
+    position: relative;
+    display: flex;
+    height: 100vh;
+}
+
+.side-menu {
+    height: 100%;
+    box-shadow: 0 0 10px 0 #0002;
+}
+.side-menu nav {
+    margin-top: 100px;
+}
+.side-menu nav ul {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.side-menu nav li {
+    padding: 15px 80px;
+    font-size: 18px;
+    text-transform: uppercase;
+    cursor: pointer;
+    user-select: none;
+    color: var(--text-color);
+}
+.side-menu nav li:hover {
+    background: var(--color-primary-hover);
+    color: #fff;
+}
+.side-menu nav li.active {
+    background: var(--color-primary);
+    color: #fff;
+}
+.side-menu nav li.disabled {
+    background: #fff;
+    color: var(--text-disabled-color);
+    cursor: default;
+}
+.side-menu nav a {
+    text-decoration: none;
+}
+
+.content {
+    width: 100%;
+    padding: 30px 50px;
+    display: none;
+}
+.content:target {
+    display: block;
+}
+.content h1 {
+    margin: 0 0 20px;
+}
+
+.content .courses {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    overflow-y: auto;
+    height: calc(100% - 60px);
+    padding-right: 10px;
+}
+.content .courses a {
+    text-decoration: none;
+}
+.content .courses .course {
+    margin: 4px;
+    padding: 15px 20px;
+    box-shadow: 0 0 4px 0 #0002;
+    cursor: pointer;
+}

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+    <div class="menu">
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#students">Students</a></li>
+                <li><a href="#staff">Staff</a></li>
+                <li class="logout"><a href="index.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <div id="home" class="content container">
+        <h1>Manage Data</h1>
+        <div class="dashboard">
+            <a href="#students">
+                <div class="dashboard-item">
+                    <span>Students</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Student ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>DOB</th>
+                                <th>Gender</th>
+                                <th>Department</th>
+                                <th>E-Mail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="student-dashboard"></tbody>
+                    </table>
+                </div>
+            </a>
+            <a href="#staff">
+                <div class="dashboard-item">
+                    <span>Staff</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Staff ID</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>DOB</th>
+                                <th>Gender</th>
+                                <th>Department</th>
+                                <th>E-Mail</th>
+                            </tr>
+                        </thead>
+                        <tbody id="staff-dashboard"></tbody>
+                    </table>
+                </div>
+            </a>
+        </div>
+    </div>
+
+    <div id="students" class="content container">
+        <div class="header-edit flex">
+            <h1>All Students</h1>
+            <div class="btn-container">
+                <button id="student-edit-button" disabled>Edit</button>
+                <button id="student-remove-button" onclick="removeStudent()" disabled>Remove</button>
+                <button id="student-add-button" onclick="addStudent()">Add</button>
+            </div>
+        </div>
+        <div class="table-container">
+            <table class="item-selection">
+                <thead>
+                    <tr>
+                        <th>Student ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody id="student-table"></tbody>
+            </table>
+        </div>
+    </div>
+
+    <div id="staff" class="content container">
+        <div class="header-edit flex">
+            <h1>Staff</h1>
+            <div class="btn-container">
+                <button disabled>Edit</button>
+                <button disabled>Remove</button>
+                <button disabled>Add</button>
+            </div>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>Staff ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>DOB</th>
+                    <th>Gender</th>
+                    <th>Department</th>
+                    <th>E-Mail</th>
+                </tr>
+            </thead>
+            <tbody id="staff-table"></tbody>
+        </table>
+
+        <p>For reference see student page. Backend is needed for further data processing.</p>
+    </div>
+
+    <template id="add-row-template">
+        <tr class="add-row">
+            <td></td>
+            <td><input id="add-std-fname" type="text" placeholder="first name"></td>
+            <td><input id="add-std-lname" type="text" placeholder="last name"></td>
+            <td><input id="add-std-date" type="date"></td>
+            <td>
+                <select id="add-std-gender" name="gender">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </td>
+            <td><input id="add-std-dep" type="text" placeholder="department"></td>
+            <td><input id="add-std-email" type="text" placeholder="email"></td>
+            <td class="action-btn">
+                <div>
+                    <button class="error" onclick="cancelAddStudent()">Cancel</button>
+                    <button onclick="saveAddStudent()">Save</button>
+                </div>
+            </td>
+        </tr>
+    </template>
+
+    <script src="js/model.js"></script>
+    <script src="js/admin.js"></script>
+</body>
+</html>

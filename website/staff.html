@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Staff</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/staff.css">
+</head>
+<body class="staff">
+    <div class="staff-container">
+        <div class="side-menu">
+            <nav>
+                <ul>
+                    <li class="active">Courses</li>
+    
+                    <!-- Only decoration -->
+                    <li class="disabled">Grades</li>
+                    <li class="disabled">Messages</li>
+                    <li class="disabled">Schedule</li>
+                    <!-- End decoration -->
+
+                    <a href="index.html"><li>Logout</li></a>
+                </ul>
+            </nav>
+        </div>
+        <div id="overview" class="content">
+            <h1>Course Overview</h1>
+            <div id="courses" class="courses">
+                <template id="course-template">
+                    <a href="#members">
+                        <div class="course">
+                            <span class="title">[TITLE]</span>
+                        </div>
+                    </a>
+                </template>
+            </div>
+        </div>
+
+        <div id="members" class="content">
+            <h1>Course Members</h1>
+            <p>Not available yet... Backend is needed to load Members from certain courses!</p>
+            <a href="#overview">Go back</a>
+        </div>
+    </div>
+
+    <script src="js/staff.js"></script>
+</body>
+</html>

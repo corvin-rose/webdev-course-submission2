@@ -1,0 +1,43 @@
+body.login {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    overflow: hidden;
+    background: var(--background);
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 35px 1px #0004;
+    background: #fff;
+    width: 350px;
+}
+.login-form h3 {
+    margin: 0;
+    padding: 40px 0;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    font-size: 28px;
+    color: #fff;
+}
+.login-form h3.staff {
+    background: linear-gradient(145deg, rgb(231, 198, 77), rgb(243, 163, 129));
+}
+.login-form h3.admin {
+    background: linear-gradient(145deg, rgba(245,78,162,1), rgba(255,118,118,1));
+}
+
+.login-form .inputs {
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+}
+.login-form .inputs input {
+    margin-bottom: 30px;
+}
+.login-form .inputs button {
+    padding: 15px 30px;
+    margin-top: 20px;
+}
