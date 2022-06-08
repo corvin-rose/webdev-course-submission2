@@ -66,6 +66,7 @@
 }
 .content .table-container {
     position: relative;
+    border-right: 1px solid var(--text-disabled-color);
 }
 .content table.item-selection tbody tr.add-row:hover {
     background: #fff;
@@ -93,7 +94,8 @@
 
 .dashboard {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     gap: 40px;
 }
 .dashboard a {
@@ -101,18 +103,32 @@
 }
 .dashboard-item {
     position: relative;
-    padding: 20px 40px 30px;
+    padding: 25px 40px 30px;
     box-shadow: 0 0 4px 0 #0003;
-    cursor: pointer;
+    width: 250px;
+    height: 175px;
 }
-.dashboard-item::after {
-    content: 'Edit';
+.dashboard-item.full {
+    width: 100%;
+}
+a > .dashboard-item::after {
+    content: 'More';
     position: absolute;
-    top: 20px;
-    right: 40px;
+    cursor: pointer;
+    bottom: 25px;
+    right: 30px;
     color: var(--color-primary);
 }
-.dashboard-item table {
-    margin-top: 25px;
+.dashboard-item h3 {
+    margin: 0;
+    margin-bottom: 10px;
+    font-weight: normal;
+    font-size: 25px;
 }
-
+.dashboard-item span {
+    color: var(--text-disabled-color);
+}
+.dashboard-item canvas {
+    width: inherit;
+    height: inherit;
+}

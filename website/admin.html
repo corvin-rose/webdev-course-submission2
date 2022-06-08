@@ -5,6 +5,7 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="lib/jquery-ui.theme.min.css">
 </head>
 <body>
     <div class="menu">
@@ -21,42 +22,20 @@
     <div id="home" class="content container">
         <h1>Manage Data</h1>
         <div class="dashboard">
+            <div class="dashboard-item full">
+                <h3>New Members</h3>
+                <canvas id="member-diagram"></canvas>
+            </div>
             <a href="#students">
                 <div class="dashboard-item">
-                    <span>Students</span>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Student ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>DOB</th>
-                                <th>Gender</th>
-                                <th>Department</th>
-                                <th>E-Mail</th>
-                            </tr>
-                        </thead>
-                        <tbody id="student-dashboard"></tbody>
-                    </table>
+                    <h3>Students</h3>
+                    <span id="student-count">Currently 0 students in database</span>
                 </div>
             </a>
             <a href="#staff">
                 <div class="dashboard-item">
-                    <span>Staff</span>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Staff ID</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
-                                <th>DOB</th>
-                                <th>Gender</th>
-                                <th>Department</th>
-                                <th>E-Mail</th>
-                            </tr>
-                        </thead>
-                        <tbody id="staff-dashboard"></tbody>
-                    </table>
+                    <h3>Staff</h3>
+                    <span id="staff-count">Currently 0 staff members in database</span>
                 </div>
             </a>
         </div>
@@ -82,6 +61,7 @@
                         <th>Gender</th>
                         <th>Department</th>
                         <th>E-Mail</th>
+                        <th>Joining Date</th>
                     </tr>
                 </thead>
                 <tbody id="student-table"></tbody>
@@ -93,44 +73,45 @@
         <div class="header-edit flex">
             <h1>Staff</h1>
             <div class="btn-container">
-                <button disabled>Edit</button>
-                <button disabled>Remove</button>
-                <button disabled>Add</button>
+                <button id="staff-edit-button" disabled>Edit</button>
+                <button id="staff-remove-button" onclick="removeStaff()" disabled>Remove</button>
+                <button id="staff-add-button" onclick="addStaff()">Add</button>
             </div>
         </div>
-        <table>
-            <thead>
-                <tr>
-                    <th>Staff ID</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>DOB</th>
-                    <th>Gender</th>
-                    <th>Department</th>
-                    <th>E-Mail</th>
-                </tr>
-            </thead>
-            <tbody id="staff-table"></tbody>
-        </table>
-
-        <p>For reference see student page. Backend is needed for further data processing.</p>
+        <div class="table-container">
+            <table class="item-selection">
+                <thead>
+                    <tr>
+                        <th>Staff ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>DOB</th>
+                        <th>Gender</th>
+                        <th>Department</th>
+                        <th>E-Mail</th>
+                    </tr>
+                </thead>
+                <tbody id="staff-table"></tbody>
+            </table>
+        </div>
     </div>
 
-    <template id="add-row-template">
+    <template id="add-std-row-template">
         <tr class="add-row">
             <td></td>
-            <td><input id="add-std-fname" type="text" placeholder="first name"></td>
-            <td><input id="add-std-lname" type="text" placeholder="last name"></td>
-            <td><input id="add-std-date" type="date"></td>
+            <td><input id="add-std-fname" type="text" placeholder="first name" onchange="checkInputValid('add-std-fname')"></td>
+            <td><input id="add-std-lname" type="text" placeholder="last name" onchange="checkInputValid('add-std-lname')"></td>
+            <td><input id="add-std-date" type="date" onchange="checkInputValid('add-std-date')"></td>
             <td>
-                <select id="add-std-gender" name="gender">
+                <select id="add-std-gender" name="gender" onchange="checkInputValid('add-std-gender')">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
                     <option value="Other">Other</option>
                 </select>
             </td>
-            <td><input id="add-std-dep" type="text" placeholder="department"></td>
-            <td><input id="add-std-email" type="text" placeholder="email"></td>
+            <td><input id="add-std-dep" type="text" placeholder="department" onchange="checkInputValid('add-std-dep')"></td>
+            <td><input id="add-std-email" type="text" placeholder="email" onchange="checkInputValid('add-std-email')"></td>
+            <td><input id="add-std-join" type="date" onchange="checkInputValid('add-std-join')"></td>
             <td class="action-btn">
                 <div>
                     <button class="error" onclick="cancelAddStudent()">Cancel</button>
@@ -140,7 +121,33 @@
         </tr>
     </template>
 
+    <template id="add-stf-row-template">
+        <tr class="add-row">
+            <td></td>
+            <td><input id="add-stf-fname" type="text" placeholder="first name" onchange="checkInputValid('add-stf-fname')"></td>
+            <td><input id="add-stf-lname" type="text" placeholder="last name" onchange="checkInputValid('add-stf-lname')"></td>
+            <td><input id="add-stf-date" type="date" onchange="checkInputValid('add-stf-date')"></td>
+            <td>
+                <select id="add-stf-gender" name="gender" onchange="checkInputValid('add-stf-gender')">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </td>
+            <td><input id="add-stf-dep" type="text" placeholder="department" onchange="checkInputValid('add-stf-dep')"></td>
+            <td><input id="add-stf-email" type="text" placeholder="email" onchange="checkInputValid('add-stf-email')"></td>
+            <td class="action-btn">
+                <div>
+                    <button class="error" onclick="cancelAddStaff()">Cancel</button>
+                    <button onclick="saveAddStaff()">Save</button>
+                </div>
+            </td>
+        </tr>
+    </template>
+
     <script src="js/model.js"></script>
     <script src="js/admin.js"></script>
+    <script src="lib/jquery.min.js"></script>
+    <script src="lib/jquery-ui.min.js"></script>
 </body>
 </html>

@@ -22,10 +22,10 @@ The database is simulated with json files inside the `/website/db` folder. The j
 <br/>
 
 ## Implemented Features:
-- [ ] DOB Validation
-- [ ] Add Joining Date Column Validation
-- [ ] Joining Date Validation
-- [ ] Email Validation
+- [x] DOB Validation
+- [x] Add Joining Date Column
+- [x] Joining Date Validation
+- [x] Email Validation
 - [ ] Department Filter
 - [ ] Semester Filter
 - [ ] Semester Assigning

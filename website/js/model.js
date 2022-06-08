@@ -5,7 +5,7 @@ const Gender = {
 }
 
 class Student {
-    constructor(id, firstName, lastName, dob, gender, department, email) {
+    constructor(id, firstName, lastName, dob, gender, department, email, joiningDate) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -13,6 +13,7 @@ class Student {
         this.gender = gender;
         this.department = department;
         this.email = email;
+        this.joiningDate = joiningDate;
     }
 }
 
