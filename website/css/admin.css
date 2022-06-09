@@ -77,7 +77,6 @@ html {
 .content table thead th {
     z-index: 2;
     position: sticky;
-    top: 160px;
     background: #fff;
     border: none;
     border-left: 2px solid var(--text-disabled-color);
@@ -86,6 +85,12 @@ html {
                 inset 0 -2px 0 0 var(--text-disabled-color),
                 -1px 0 0 0 var(--text-disabled-color);
     transform: translate(0.5px, -0.5px);
+}
+#students.content table thead th {
+    top: 160px;
+}
+#staff.content table thead th {
+    top: 100px;
 }
 .content table input {
     font-size: 16px;
