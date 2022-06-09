@@ -117,6 +117,7 @@ function loadDepartmentSelect(id, callback=()=>null) {
 
 function displayStudents() {
     let applyStudentData = (students, departments) => {
+        let studentCount = students.length;
         let summer = (month) => month >= 3 && month <= 9;
         let winter = (month) => month <= 2 || month >= 10;
         let semesterCheck = (month) => {
@@ -147,7 +148,7 @@ function displayStudents() {
 
             studentCurId = student.id+1;
         }
-        document.getElementById('student-count').innerHTML = `Currently ${students.length} students in database`;
+        document.getElementById('student-count').innerHTML = `Currently ${studentCount} students in database`;
     }
     $.ajax({
         url: '/db/student.json',
@@ -158,7 +159,8 @@ function displayStudents() {
                 let departments = [];
                 data.forEach(v => departments[v.id] = v.name);
                 applyStudentData(students, departments);
-            })
+            });
+            initChart(students);
         },
         error: (e) => console.error(e)
     });
@@ -381,4 +383,52 @@ function checkEmail(id) {
         email.classList.add('error');
         return false;
     }
+}
+
+
+
+
+// Only for fancy decoration
+
+// https://developers.google.com/chart/interactive/docs/gallery/barchart
+function initChart(students) {
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {'packages':['corechart', 'bar']});
+
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+
+    let months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+    let preparedData = [
+        ['Month', 'Amount']
+    ];
+    for(let x = 1; x <= months.length; x++) {
+        preparedData.push([months[x-1], students.filter(v => +v.joiningDate.split('-')[1] == x).length]);
+    }
+
+    // Callback that creates and populates a data table, 
+    // instantiates the pie chart, passes in the data and
+    // draws it.
+    function drawChart() {
+
+        // Create the data table.
+        var data = google.visualization.arrayToDataTable(preparedData);
+
+        // Set chart options
+        var options = {
+            'title':'2015',
+            'legend':'none',
+            'chartArea': {'left': 0}
+        };
+
+        // Instantiate and draw our chart, passing in some options.
+        var chart = new google.visualization.ColumnChart(document.getElementById('student-diagram'));
+        chart.draw(data, options);
+    }
+    $(window).resize(() => {
+        drawChart();
+    });
+    window.onhashchange = () => {
+        drawChart();
+    };
 }
