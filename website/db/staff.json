@@ -1,0 +1,182 @@
+[
+    {
+        "id": 1,
+        "firstName": "Noe",
+        "lastName": "Cordova",
+        "dob": "1982-05-23",
+        "gender": "Other",
+        "department": 4,
+        "email": "Noe.Cordova@htw-berlin.de"
+    },
+    {
+        "id": 2,
+        "firstName": "Christine",
+        "lastName": "Mercado",
+        "dob": "1976-09-09",
+        "gender": "Other",
+        "department": 5,
+        "email": "Christine.Mercado@htw-berlin.de"
+    },
+    {
+        "id": 3,
+        "firstName": "Malaki",
+        "lastName": "Miranda",
+        "dob": "1973-07-31",
+        "gender": "Other",
+        "department": 4,
+        "email": "Malaki.Miranda@htw-berlin.de"
+    },
+    {
+        "id": 4,
+        "firstName": "Devin",
+        "lastName": "Weaver",
+        "dob": "1976-06-30",
+        "gender": "Male",
+        "department": 6,
+        "email": "Devin.Weaver@htw-berlin.de"
+    },
+    {
+        "id": 5,
+        "firstName": "Joselyn",
+        "lastName": "Hull",
+        "dob": "1975-10-30",
+        "gender": "Female",
+        "department": 6,
+        "email": "Joselyn.Hull@htw-berlin.de"
+    },
+    {
+        "id": 6,
+        "firstName": "Diego",
+        "lastName": "Hull",
+        "dob": "1973-03-28",
+        "gender": "Male",
+        "department": 1,
+        "email": "Diego.Hull@htw-berlin.de"
+    },
+    {
+        "id": 7,
+        "firstName": "Jazmin",
+        "lastName": "Collins",
+        "dob": "1975-07-06",
+        "gender": "Male",
+        "department": 4,
+        "email": "Jazmin.Collins@htw-berlin.de"
+    },
+    {
+        "id": 8,
+        "firstName": "Jayden",
+        "lastName": "Odom",
+        "dob": "1979-06-09",
+        "gender": "Other",
+        "department": 1,
+        "email": "Jayden.Odom@htw-berlin.de"
+    },
+    {
+        "id": 9,
+        "firstName": "Weston",
+        "lastName": "Lynch",
+        "dob": "1969-08-09",
+        "gender": "Male",
+        "department": 1,
+        "email": "Weston.Lynch@htw-berlin.de"
+    },
+    {
+        "id": 10,
+        "firstName": "Claudia",
+        "lastName": "Klein",
+        "dob": "1978-02-03",
+        "gender": "Male",
+        "department": 2,
+        "email": "Claudia.Klein@htw-berlin.de"
+    },
+    {
+        "id": 11,
+        "firstName": "Juliette",
+        "lastName": "Pugh",
+        "dob": "1969-07-17",
+        "gender": "Female",
+        "department": 6,
+        "email": "Juliette.Pugh@htw-berlin.de"
+    },
+    {
+        "id": 12,
+        "firstName": "Aleena",
+        "lastName": "Henry",
+        "dob": "1964-07-09",
+        "gender": "Female",
+        "department": 2,
+        "email": "Aleena.Henry@htw-berlin.de"
+    },
+    {
+        "id": 13,
+        "firstName": "Jaylen",
+        "lastName": "Gibson",
+        "dob": "1973-01-31",
+        "gender": "Male",
+        "department": 4,
+        "email": "Jaylen.Gibson@htw-berlin.de"
+    },
+    {
+        "id": 14,
+        "firstName": "Noemi",
+        "lastName": "Malone",
+        "dob": "1976-06-15",
+        "gender": "Female",
+        "department": 4,
+        "email": "Noemi.Malone@htw-berlin.de"
+    },
+    {
+        "id": 15,
+        "firstName": "Alma",
+        "lastName": "Stephenson",
+        "dob": "1972-02-07",
+        "gender": "Male",
+        "department": 4,
+        "email": "Alma.Stephenson@htw-berlin.de"
+    },
+    {
+        "id": 16,
+        "firstName": "Kaitlynn",
+        "lastName": "Williams",
+        "dob": "1977-11-28",
+        "gender": "Other",
+        "department": 3,
+        "email": "Kaitlynn.Williams@htw-berlin.de"
+    },
+    {
+        "id": 17,
+        "firstName": "Diego",
+        "lastName": "Dorsey",
+        "dob": "1976-04-15",
+        "gender": "Male",
+        "department": 6,
+        "email": "Diego.Dorsey@htw-berlin.de"
+    },
+    {
+        "id": 18,
+        "firstName": "Isis",
+        "lastName": "Perkins",
+        "dob": "1970-12-13",
+        "gender": "Male",
+        "department": 2,
+        "email": "Isis.Perkins@htw-berlin.de"
+    },
+    {
+        "id": 19,
+        "firstName": "Jazmin",
+        "lastName": "Lynch",
+        "dob": "1975-08-02",
+        "gender": "Other",
+        "department": 5,
+        "email": "Jazmin.Lynch@htw-berlin.de"
+    },
+    {
+        "id": 20,
+        "firstName": "Bryson",
+        "lastName": "Collins",
+        "dob": "1967-12-10",
+        "gender": "Male",
+        "department": 2,
+        "email": "Bryson.Collins@htw-berlin.de"
+    }
+]

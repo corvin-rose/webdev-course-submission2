@@ -25,11 +25,23 @@
         </div>
         <div id="overview" class="content">
             <h1>Course Overview</h1>
+            <div class="select-container">
+                <label for="dep-select">Department</label>
+                <select id="dep-select" name="department" onchange="changeDepartment(event)">
+                    <option value="-1">All</option>
+                </select>
+                <label for="sem-select">Semester</label>
+                <select id="sem-select" name="semester" onchange="changeSemester(event)">
+                    <option value="summer">Summer</option>
+                    <option value="winter">Winter</option>
+                </select>
+            </div>
             <div id="courses" class="courses">
                 <template id="course-template">
                     <a href="#members">
                         <div class="course">
                             <span class="title">[TITLE]</span>
+                            <span id="member-count"></span>
                         </div>
                     </a>
                 </template>
@@ -38,11 +50,28 @@
 
         <div id="members" class="content">
             <h1>Course Members</h1>
-            <p>Not available yet... Backend is needed to load Members from certain courses!</p>
+            <h2 id="course-title"></h2>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Student ID</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>DOB</th>
+                            <th>Gender</th>
+                            <th>E-Mail</th>
+                            <th>Joining Date</th>
+                        </tr>
+                    </thead>
+                    <tbody id="member-content"></tbody>
+                </table>
+            </div>
             <a href="#overview">Go back</a>
         </div>
     </div>
 
     <script src="js/staff.js"></script>
+    <script src="lib/jquery.min.js"></script>
 </body>
 </html>

@@ -49,24 +49,54 @@
     margin: 50px 0 30px;
 }
 .content .header-edit {
-    display: flex;
+    z-index: 1;
+    position: sticky;
     justify-content: space-between;
-    margin: 50px 0 30px;
+    margin-top: 20px;
+    padding: 30px 0 30px;
+    background: #fff;
+    top: 0;
 }
 .content .header-edit h1 {
     margin: 0;
+}
+.content .header-edit > div {
+    position: relative;
+}
+.content .btn-container {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+.content .select-container {
+    padding-top: 30px;
+}
+.content table thead th {
+    z-index: 2;
+    position: sticky;
+    top: 160px;
+    background: #fff;
+    border: none;
+    border-left: 2px solid var(--text-disabled-color);
+    box-shadow: inset -1px -1px 0 1px var(--text-disabled-color),
+                inset 0 2px 0 0 var(--text-disabled-color),
+                inset 0 -2px 0 0 var(--text-disabled-color),
+                -1px 0 0 0 var(--text-disabled-color);
+    transform: translate(0.5px, -0.5px);
+}
+.content table input {
+    font-size: 16px;
+    padding: 6px 10px;
+    box-shadow: 0 0 2px 0 #0004;
 }
 .content table.item-selection tbody tr:hover {
     background: var(--color-primary);
     color: #fff;
     cursor: pointer;
 }
-.content .btn-container {
-    float: right;
-}
 .content .table-container {
     position: relative;
-    border-right: 1px solid var(--text-disabled-color);
+    margin-bottom: 100px;
 }
 .content table.item-selection tbody tr.add-row:hover {
     background: #fff;
@@ -74,9 +104,7 @@
     cursor: default;
 }
 .content table .add-row input[type='text'] {
-    padding: 2px 4px;
-    font-size: 16px;
-    width: calc(100% - 12px);
+    width: calc(100% - 22px);
 }
 .content table .add-row .action-btn {
     position: absolute;

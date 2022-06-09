@@ -5,7 +5,6 @@
     <title>Admin</title>
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/admin.css">
-    <link rel="stylesheet" href="lib/jquery-ui.theme.min.css">
 </head>
 <body>
     <div class="menu">
@@ -42,12 +41,26 @@
     </div>
 
     <div id="students" class="content container">
-        <div class="header-edit flex">
-            <h1>All Students</h1>
-            <div class="btn-container">
-                <button id="student-edit-button" disabled>Edit</button>
-                <button id="student-remove-button" onclick="removeStudent()" disabled>Remove</button>
-                <button id="student-add-button" onclick="addStudent()">Add</button>
+        <div class="header-edit">
+            <div class="flex">
+                <h1>All Students</h1>
+                <div class="btn-container">
+                    <button id="student-edit-button" disabled>Edit</button>
+                    <button id="student-remove-button" onclick="removeStudent()" disabled>Remove</button>
+                    <button id="student-add-button" onclick="addStudent()">Add</button>
+                </div>
+            </div>
+            <div class="select-container">
+                <label for="dep-select">Department</label>
+                <select id="dep-select" name="department" onchange="changeDepartment(event)">
+                    <option value="-1">All</option>
+                </select>
+                <label for="sem-select">Semester</label>
+                <select id="sem-select" name="semester" onchange="changeSemester(event)">
+                    <option value="all">All</option>
+                    <option value="summer">Summer</option>
+                    <option value="winter">Winter</option>
+                </select>
             </div>
         </div>
         <div class="table-container">
@@ -70,12 +83,14 @@
     </div>
 
     <div id="staff" class="content container">
-        <div class="header-edit flex">
-            <h1>Staff</h1>
-            <div class="btn-container">
-                <button id="staff-edit-button" disabled>Edit</button>
-                <button id="staff-remove-button" onclick="removeStaff()" disabled>Remove</button>
-                <button id="staff-add-button" onclick="addStaff()">Add</button>
+        <div class="header-edit">
+            <div class="flex">
+                <h1>Staff</h1>
+                <div class="btn-container">
+                    <button id="staff-edit-button" disabled>Edit</button>
+                    <button id="staff-remove-button" onclick="removeStaff()" disabled>Remove</button>
+                    <button id="staff-add-button" onclick="addStaff()">Add</button>
+                </div>
             </div>
         </div>
         <div class="table-container">
@@ -109,7 +124,9 @@
                     <option value="Other">Other</option>
                 </select>
             </td>
-            <td><input id="add-std-dep" type="text" placeholder="department" onchange="checkInputValid('add-std-dep')"></td>
+            <td>
+                <select id="add-std-dep" name="add-std-dep" onchange="checkInputValid('add-std-dep')"></select>
+            </td>
             <td><input id="add-std-email" type="text" placeholder="email" onchange="checkInputValid('add-std-email')"></td>
             <td><input id="add-std-join" type="date" onchange="checkInputValid('add-std-join')"></td>
             <td class="action-btn">
@@ -148,6 +165,5 @@
     <script src="js/model.js"></script>
     <script src="js/admin.js"></script>
     <script src="lib/jquery.min.js"></script>
-    <script src="lib/jquery-ui.min.js"></script>
 </body>
 </html>

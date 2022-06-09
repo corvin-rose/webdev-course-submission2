@@ -1,0 +1,26 @@
+[
+    {
+        "id": 1,
+        "name": "Mathematics"
+    },
+    {
+        "id": 2,
+        "name": "Programming"
+    },
+    {
+        "id": 3,
+        "name": "Computer Networks"
+    },
+    {
+        "id": 4,
+        "name": "Software Engineering"
+    },
+    {
+        "id": 5,
+        "name": "Webdevelopement"
+    },
+    {
+        "id": 6,
+        "name": "Computergraphics"
+    }
+]

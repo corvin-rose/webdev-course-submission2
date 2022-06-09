@@ -80,3 +80,21 @@ table td, table th {
     padding: 6px;
     border: 1px solid var(--text-disabled-color);
 }
+
+select {
+    font-size: 18px;
+    background: #fff;
+    color: var(--text-color);
+    padding: 6px 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 2px 0 #0004;
+    cursor: pointer;
+}
+
+label {
+    position: absolute;
+    color: var(--text-disabled-color);
+    transform: translateY(-120%);
+    font-size: 12px;
+}
