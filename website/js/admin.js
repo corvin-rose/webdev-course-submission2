@@ -54,36 +54,9 @@ document.addEventListener("DOMContentLoaded", function(event) {
     staffAddButton = document.getElementById('staff-add-button');
     staffRemoveButton = document.getElementById('staff-remove-button');
     staffEditButton = document.getElementById('staff-edit-button');
-
     staffTable = document.getElementById('staff-table');
 
-    let applyStaffData = (data) => {
-        for (let staff of data) {
-            let row = document.createElement('tr');
-            row.id = 'stf-' + staff.id;
-            row.setAttribute('onclick', `selectRow('stf-${staff.id}')`)
-            row.innerHTML = `
-                <td>${staff.id.toString().padStart(3, '0')}</td>
-                <td>${staff.firstName}</td>
-                <td>${staff.lastName}</td>
-                <td>${staff.dob}</td>
-                <td>${staff.gender}</td>
-                <td>${staff.department}</td>
-                <td>${staff.email}</td>
-            `;
-            staffTable.appendChild(row);
-
-            staffCurId = staff.id+1;
-        }
-        document.getElementById('staff-count').innerHTML = `Currently ${data.length} staff members in database`;
-    }
-    $.ajax({
-        url: '/db/staff.json',
-        type: 'GET',
-        dataType: 'json',
-        success: applyStaffData,
-        error: (e) => console.error(e)
-    });
+    displayStaff();
 });
 
 function getDepartments(callback) {
@@ -161,6 +134,42 @@ function displayStudents() {
                 applyStudentData(students, departments);
             });
             initChart(students);
+        },
+        error: (e) => console.error(e)
+    });
+}
+
+function displayStaff() {
+    let applyStaffData = (staffs, departments) => {
+        for (let staff of staffs) {
+            let row = document.createElement('tr');
+            row.id = 'stf-' + staff.id;
+            row.setAttribute('onclick', `selectRow('stf-${staff.id}')`)
+            row.innerHTML = `
+                <td>${staff.id.toString().padStart(3, '0')}</td>
+                <td>${staff.firstName}</td>
+                <td>${staff.lastName}</td>
+                <td>${staff.dob}</td>
+                <td>${staff.gender}</td>
+                <td>${departments[+staff.department]}</td>
+                <td>${staff.email}</td>
+            `;
+            staffTable.appendChild(row);
+
+            staffCurId = staff.id+1;
+        }
+        document.getElementById('staff-count').innerHTML = `Currently ${staffs.length} staff members in database`;
+    }
+    $.ajax({
+        url: '/db/staff.json',
+        type: 'GET',
+        dataType: 'json',
+        success:  (staff) => {
+            getDepartments((data) => {
+                let departments = [];
+                data.forEach(v => departments[v.id] = v.name);
+                applyStaffData(staff, departments);
+            });
         },
         error: (e) => console.error(e)
     });
@@ -284,6 +293,7 @@ function addStaff() {
     if (!staffCurrentAddRow) {
         staffCurrentAddRow = addRow;
         staffTable.appendChild(addRow);
+        loadDepartmentSelect('add-stf-dep');
     }
 
     deselectAll();
@@ -321,9 +331,9 @@ function saveAddStaff() {
         <td>${(id).toString().padStart(3, '0')}</td>
         <td>${firstName.value}</td>
         <td>${lastName.value}</td>
-        <td>${new Date(date.value).toLocaleDateString("en-US", dateOptions)}</td>
+        <td>${date.value}</td>
         <td>${gender.value}</td>
-        <td>${department.value}</td>
+        <td>${departments.filter(v => v.id == department.value).pop().name}</td>
         <td>${email.value}</td>
     `;
     staffTable.appendChild(row);
@@ -418,7 +428,8 @@ function initChart(students) {
         var options = {
             'title':'2015',
             'legend':'none',
-            'chartArea': {'left': 0}
+            'chartArea': {'left': 0},
+            'colors': ['#44b9dd'] 
         };
 
         // Instantiate and draw our chart, passing in some options.
